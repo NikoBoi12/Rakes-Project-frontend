@@ -30,12 +30,13 @@ export async function uploadPdf(pdfFile) {
     };
 
     // Send the HTTP POST request to your backend
-    const response = await fetch('', {
+    // JWT is sent via HttpOnly cookie (set by backend)
+    const response = await fetch('APIENDPOINT', {
       method: 'POST',
       headers: {
-        // Tells the backend we are sending JSON data
-        'Content-Type': 'application/json', 
+        'Content-Type': 'application/json'
       },
+      credentials: 'include', // Ensure cookies are sent
       body: JSON.stringify(payload)
     });
 
