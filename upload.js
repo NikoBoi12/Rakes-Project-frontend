@@ -25,13 +25,25 @@ function handleUploadFormSubmit(event) {
         statusDiv.style.color = '#e91e63';
         return;
     }
+    // Check that the file is a PDF
+    const file = files[0];
+    if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+        statusDiv.textContent = 'Only PDF files are allowed.';
+        statusDiv.style.color = '#e91e63';
+        return;
+    }
     statusDiv.textContent = `Uploading ${files.length} file(s)...`;
     statusDiv.style.color = '#ad1457';
-    // TODO: Implement actual upload logic here
-    setTimeout(() => {
-        statusDiv.textContent = 'Files uploaded successfully!';
-        statusDiv.style.color = '#43a047';
-    }, 1200);
+        // Pass the PDF file to the conversion/sendoff module
+        import('./base64ConvertSend.js').then((module) => {
+            return module.uploadPdf(file);
+        }).then(() => {
+            statusDiv.textContent = 'File sent successfully!';
+            statusDiv.style.color = '#43a047';
+        }).catch((err) => {
+            statusDiv.textContent = `Error: ${err.message}`;
+            statusDiv.style.color = '#e91e63';
+        });
 }
 
 document.getElementById('upload-form').onsubmit = handleUploadFormSubmit;
