@@ -5,99 +5,173 @@
     --card-bg: #ffffff;
     --primary-btn: #3182ce;
     --primary-btn-hover: #2b6cb0;
+    --accent-light: #fef3c7;
+    --border-radius: 14px;
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.08);
+    --input-bg: #f7fafc;
+    --input-border: #cbd5e0;
+    --header: #3182ce;
 }
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--bg-color);
+    background: var(--bg-color);
     color: var(--text-main);
-    line-height: 1.6;
+    line-height: 1.7;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
+    letter-spacing: 0.01em;
+    font-size: 1.08rem;
 }
 
 header {
     text-align: center;
-    padding: 3rem 1rem 1.5rem;
+    padding: 3.5rem 1rem 2rem;
     width: 100%;
+    background: var(--header);
+    color: #fff;
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
 }
 
 h1 {
     margin: 0 0 0.5rem 0;
-    color: var(--text-main);
-    font-size: 2.2rem;
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
 }
 
 h2 {
     margin: 0;
     font-weight: 400;
-    font-size: 1.1rem;
-    color: var(--text-muted);
+    font-size: 1.15rem;
+    color: #fef3c7;
+    opacity: 0.95;
 }
 
 main {
     width: 100%;
-    max-width: 550px;
-    padding: 1rem;
+    max-width: 600px;
+    padding: 2rem 1rem 1.5rem;
     box-sizing: border-box;
+    margin-top: -2.5rem;
 }
 
 section {
     background: var(--card-bg);
     padding: 2.5rem 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
     text-align: center;
+    margin-bottom: 2rem;
+    border: 1px solid #e2e8f0;
 }
 
-/* Form & Input styles for upload.html */
 form {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1.5rem;
     align-items: center;
     margin-top: 1rem;
+    background: var(--input-bg);
+    padding: 1.5rem 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(49,130,206,0.07);
 }
 
 input[type="file"] {
-    padding: 0.5rem;
-    border: 1px dashed #cbd5e0;
-    background-color: #f7fafc;
-    border-radius: 6px;
+    padding: 0.7rem 1rem;
+    border: 2px dashed var(--primary-btn);
+    background-color: var(--input-bg);
+    border-radius: var(--border-radius);
     width: 100%;
     max-width: 350px;
     cursor: pointer;
+    font-size: 1rem;
+    color: var(--text-main);
+    transition: border-color 0.2s;
+}
+input[type="file"]:hover, input[type="file"]:focus {
+    border-color: var(--accent);
 }
 
 button[type="submit"] {
-    background-color: var(--primary-btn);
-    color: white;
+    background: var(--primary-btn);
+    color: #fff;
     border: none;
-    padding: 0.75rem 2rem;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 6px;
+    padding: 0.85rem 2.2rem;
+    font-size: 1.08rem;
+    font-weight: 700;
+    border-radius: var(--border-radius);
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(49,130,206,0.09);
+    letter-spacing: 0.02em;
 }
-
 button[type="submit"]:hover {
-    background-color: var(--primary-btn-hover);
+    background: var(--primary-btn-hover);
+    box-shadow: 0 4px 16px rgba(49,130,206,0.13);
 }
 
-/* User Info Styling */
 #user-info {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     padding-top: 1.5rem;
     border-top: 1px solid #e2e8f0;
+    text-align: center;
+    background: var(--input-bg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(49,130,206,0.07);
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #user-info h3 {
     margin: 0 0 0.5rem 0;
+    color: var(--primary-btn);
+    font-size: 1.15rem;
 }
 
+/* Avatar styling for user info */
 #user-info img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(49,130,206,0.13);
+    margin-bottom: 0.7rem;
+    border: 3px solid var(--accent);
+}
+
+/* Upload status message styling */
+#upload-status {
+    margin-top: 1.5rem;
+    font-size: 1.08rem;
+    color: var(--primary-btn);
+    min-height: 2.2em;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: color 0.2s;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+    main {
+        max-width: 98vw;
+        padding: 1rem 0.5rem;
+    }
+    section {
+        padding: 1.5rem 0.5rem;
+    }
+    form {
+        padding: 1rem 0.5rem;
+    }
+    #user-info {
+        max-width: 98vw;
+    }
+}
