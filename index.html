@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<!--
+    index.html
+    Main login page for the Syllabus to Calendar app.
+    - Renders Google login button using Google Identity Services.
+    - Displays user info after login.
+    - Redirects to upload.html after successful login.
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google OAuth Login</title>
+    <!-- Loads Google Identity Services for OAuth -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <header>
+        <h1>Syllabus to Calendar</h1>
+        <h2>Log in with Google to add your syllabus events directly to your Google Calendar.</h2>
+    </header>
+    <main>
+        <section>
+            <!-- Google login button rendered by script.js -->
+            <button id="google-login-btn"></button>
+            <!-- User info displayed after login -->
+            <article id="user-info"></article>
+        </section>
+    </main>
+    <!-- Main JS logic for login and user info -->
+    <script src="script.js"></script>
+</body>
+</html>
+

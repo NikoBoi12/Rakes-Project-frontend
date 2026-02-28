@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<!--
+    upload.html
+    File upload page for authenticated users.
+    - Redirects to login if not authenticated.
+    - Allows users to select and "upload" syllabus files (simulated).
+    - Displays upload status messages.
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Syllabus Files</title>
+</head>
+<body>
+    <header>
+        <h1>Upload Syllabus Files</h1>
+        <h2>Select your syllabus files to add events to your Google Calendar.</h2>
+    </header>
+    <main>
+        <section>
+            <!-- Upload form for syllabus files -->
+            <form id="upload-form">
+                <input type="file" id="syllabus-files" name="syllabus-files" multiple accept=".pdf,.doc,.docx,.txt" />
+                <button type="submit">Upload</button>
+            </form>
+            <!-- Status messages for upload process -->
+            <div id="upload-status"></div>
+        </section>
+    </main>
+    <!-- Main JS logic for authentication and upload handling -->
+    <script src="upload.js"></script>
+</body>
+</html>
