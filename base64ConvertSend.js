@@ -26,12 +26,11 @@ export async function uploadPdf(pdfFile) {
 
     // Setup the HTTP Request payload
     const payload = {
-      fileName: pdfFile.name,
-      fileData: base64String 
+      file: base64String
     };
 
     // Send the HTTP POST request to your backend
-    const response = await fetch('https://your-api-endpoint.com/upload', {
+    const response = await fetch('', {
       method: 'POST',
       headers: {
         // Tells the backend we are sending JSON data
