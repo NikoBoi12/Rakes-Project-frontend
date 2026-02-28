@@ -14,7 +14,7 @@ const convertToBase64 = (file) => {
 /**
  * Main function: Takes the pdfFile argument and sends it via HTTP POST
  */
-async function uploadPdf(pdfFile) {
+export async function uploadPdf(pdfFile) {
   // Basic validation to ensure a file was passed
   if (!pdfFile) {
     console.error("No file provided!");
