@@ -46,8 +46,6 @@ function handleUploadFormSubmit(event) {
             submitButton.dataset.defaultLabel = submitButton.textContent;
         }
         submitButton.disabled = true;
-        submitButton.textContent = 'Processing...';
-        submitButton.setAttribute('aria-busy', 'true');
     }
 
     import('./base64ConvertSend.js').then((module) => {
