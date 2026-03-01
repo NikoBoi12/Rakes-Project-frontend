@@ -1,10 +1,14 @@
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
 
 /**
  * Redirects to login page if user is not authenticated.
- * Authentication is checked by presence of Google JWT in localStorage.
  */
 function redirectIfNotAuthenticated() {
-    if (!localStorage.getItem('google_access_token')) { // Updated key
+    if (!getCookie('google_access_token')) {
         window.location.href = 'index.html';
     }
 }
@@ -33,15 +37,15 @@ function handleUploadFormSubmit(event) {
     }
     statusDiv.textContent = `Uploading ${files.length} file(s)...`;
     statusDiv.style.color = '#ad1457';
-        import('./base64ConvertSend.js').then((module) => {
-            return module.uploadPdf(file);
-        }).then(() => {
-            statusDiv.textContent = 'File sent successfully!';
-            statusDiv.style.color = '#43a047';
-        }).catch((err) => {
-            statusDiv.textContent = `Error: ${err.message}`;
-            statusDiv.style.color = '#e91e63';
-        });
+    import('./base64ConvertSend.js').then((module) => {
+        return module.uploadPdf(file);
+    }).then(() => {
+        statusDiv.textContent = 'File sent successfully!';
+        statusDiv.style.color = '#43a047';
+    }).catch((err) => {
+        statusDiv.textContent = `Error: ${err.message}`;
+        statusDiv.style.color = '#e91e63';
+    });
 }
 
 document.getElementById('upload-form').onsubmit = handleUploadFormSubmit;
