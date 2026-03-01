@@ -13,12 +13,19 @@ const convertToBase64 = (file) => {
 /**
  * Takes the pdfFile argument and sends it via HTTP POST
  */
+// Add the same helper function here (or export/import it)
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
 export async function uploadPdf(pdfFile) {
   if (!pdfFile) return;
 
   try {
     const base64String = await convertToBase64(pdfFile);
-    const accessToken = localStorage.getItem('google_access_token'); 
+    const accessToken = getCookie('google_access_token');
 
     const payload = { file: base64String };
 
@@ -30,7 +37,6 @@ export async function uploadPdf(pdfFile) {
       },
       body: JSON.stringify(payload)
     });
-
     if (response.ok) {
       const data = await response.json();
       console.log('Successfully uploaded:', data);

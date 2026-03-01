@@ -3,7 +3,7 @@
  * Renders the Google login button and sets up the callback.
  */
 let tokenClient;
-window.onload = function() {
+window.onload = function () {
     const GOOGLE_CLIENT_ID = "109017883108-gjq8t85q8uts1gd2j5h1n0dmutm2ekh0.apps.googleusercontent.com"; //
 
     tokenClient = google.accounts.oauth2.initTokenClient({
@@ -11,8 +11,9 @@ window.onload = function() {
         scope: 'https://www.googleapis.com/auth/calendar.events',
         callback: (response) => {
             if (response.access_token) {
-                localStorage.setItem('google_access_token', response.access_token);
-                window.location.href = 'upload.html'; //
+                document.cookie = `google_access_token=${response.access_token}; path=/; max-age=3600; SameSite=Lax`;
+
+                window.location.href = 'upload.html';
             }
         },
     });
