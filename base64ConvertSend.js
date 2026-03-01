@@ -20,7 +20,7 @@ function getCookie(name) {
   if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
-export async function uploadPdf(pdfFile) {
+export async function uploadPdf(pdfFile, filters = []) {
   if (!pdfFile) return;
 
   try {
@@ -28,6 +28,10 @@ export async function uploadPdf(pdfFile) {
     const accessToken = getCookie('google_access_token');
 
     const payload = { file: base64String };
+    
+    if (filters.length > 0) {
+      payload.filters = filters;
+    }
 
     const response = await fetch('http://localhost:5000/create-invite', {
       method: 'POST',

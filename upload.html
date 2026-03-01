@@ -24,6 +24,29 @@
                     Select syllabus files
                 </label>
                 <input type="file" id="syllabus-files" name="syllabus-files" multiple accept=".pdf,.doc,.docx,.txt" />
+                
+                <fieldset style="margin-top: 1em; border: 1px solid var(--primary-btn); padding: 1em; border-radius: 4px;">
+                    <legend style="font-weight: 600; color: var(--primary-btn);">Filter Events</legend>
+                    <div style="display: flex; flex-direction: column; gap: 0.5em;">
+                        <label style="display: flex; align-items: center; gap: 0.5em;">
+                            <input type="checkbox" id="filter-office-hours" name="filter-office-hours" value="no_office_hours">
+                            <span>Exclude Office Hours</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5em;">
+                            <input type="checkbox" id="filter-class-times" name="filter-class-times" value="no_class_times">
+                            <span>Exclude Class Times</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5em;">
+                            <input type="checkbox" id="filter-exams" name="filter-exams" value="no_exams">
+                            <span>Exclude Exams</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5em;">
+                            <input type="checkbox" id="filter-assignments" name="filter-assignments" value="no_assignments">
+                            <span>Exclude Assignments</span>
+                        </label>
+                    </div>
+                </fieldset>
+                
                 <button type="submit">Upload</button>
             </form>
             <div id="upload-status"></div>
