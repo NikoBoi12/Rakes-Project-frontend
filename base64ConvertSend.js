@@ -29,7 +29,7 @@ export async function uploadPdf(pdfFile) {
 
     const payload = { file: base64String };
 
-    const response = await fetch('http://localhost:5000/test', {
+    const response = await fetch('http://localhost:5000/create-invite', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -37,11 +37,17 @@ export async function uploadPdf(pdfFile) {
       },
       body: JSON.stringify(payload)
     });
+    
+    const data = await response.json();
+    
     if (response.ok) {
-      const data = await response.json();
       console.log('Successfully uploaded:', data);
+      return data.processed_events;
+    } else {
+      throw new Error(data.error || 'Failed to process syllabus');
     }
   } catch (error) {
     console.error('Error:', error);
+    throw error;
   }
 }
