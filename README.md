@@ -33,3 +33,7 @@ Created by Tyler Roelfs, Evan Wachendorf, & Jesse Mills.
 
 4. **Access the application:**
    Open your browser and navigate to `http://localhost:3000`.
+
+
+## Related Repos
+https://github.com/NikoBoi12/Rakes-Project-backend/blob/main/README.md
