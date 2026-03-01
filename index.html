@@ -1,18 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="style.css">
-<!--
-    index.html
-    Main login page for the Syllabus to Calendar app.
-    - Renders Google login button using Google Identity Services.
-    - Displays user info after login.
-    - Redirects to upload.html after successful login.
--->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google OAuth Login</title>
-    <!-- Loads Google Identity Services for OAuth -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
@@ -22,21 +15,18 @@
     </header>
     <main>
         <section>
-            <!-- Google login button rendered by script.js -->
-            <button id="google-login-btn" class="pretty-btn">
-                <span style="display: flex; align-items: center; gap: 0.5em;">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" style="width: 24px; height: 24px; vertical-align: middle;"> 
-                    <span>Sign in with Google</span>
-                </span>
+            <button id="google-login-btn" class="google-login-btn">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" class="google-logo"> 
+                <span>Sign in with Google</span>
             </button>
-            <!-- User info displayed after login -->
             <article id="user-info"></article>
         </section>
     </main>
     <footer>
-        <p style="color: var(--text-muted); font-size: 0.95em; text-align: center; margin: 2em 0 0;">&copy; 2024 Syllabus to Calendar. All rights reserved.</p>
+        <p>
+            Created by Tyler Roelfs, Evan Wachendorf, & Jesse Mills
+        </p>
     </footer>
-    <!-- Main JS logic for login and user info -->
     <script src="login.js"></script>
 </body>
 </html>

@@ -2,18 +2,26 @@
  * Initializes Google Sign-In on page load.
  * Renders the Google login button and sets up the callback.
  */
+let tokenClient;
 window.onload = function() {
-    const GOOGLE_CLIENT_ID = "109017883108-gjq8t85q8uts1gd2j5h1n0dmutm2ekh0.apps.googleusercontent.com";
-    google.accounts.id.initialize({
+    const GOOGLE_CLIENT_ID = "109017883108-gjq8t85q8uts1gd2j5h1n0dmutm2ekh0.apps.googleusercontent.com"; //
+
+    tokenClient = google.accounts.oauth2.initTokenClient({
         client_id: GOOGLE_CLIENT_ID,
-        callback: handleCredentialResponse
+        scope: 'https://www.googleapis.com/auth/calendar.events',
+        callback: (response) => {
+            if (response.access_token) {
+                localStorage.setItem('google_access_token', response.access_token);
+                window.location.href = 'upload.html'; //
+            }
+        },
     });
+
     const loginButton = document.getElementById('google-login-btn');
     if (loginButton) {
-        google.accounts.id.renderButton(
-            loginButton,
-            { theme: "outline", size: "large" }
-        );
+        loginButton.onclick = () => {
+            tokenClient.requestAccessToken();
+        };
     }
 };
 
@@ -23,10 +31,8 @@ window.onload = function() {
  * @param {Object} response - The Google credential response object.
  */
 function handleCredentialResponse(response) {
-    // Save JWT to localStorage for authentication
     localStorage.setItem('google_jwt', response.credential);
 
-    // Decode JWT to get user info
     const userInfoContainer = document.getElementById('user-info');
     const userData = parseJwt(response.credential);
     userInfoContainer.innerHTML = `
@@ -35,7 +41,6 @@ function handleCredentialResponse(response) {
         <p>Email: ${userData.email}</p>
     `;
 
-    // Redirect to upload page after short delay
     setTimeout(() => {
         window.location.href = 'upload.html';
     }, 1200);

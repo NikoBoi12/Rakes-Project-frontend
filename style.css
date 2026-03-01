@@ -129,7 +129,6 @@ button[type="submit"]:hover {
     font-size: 1.15rem;
 }
 
-/* Avatar styling for user info */
 #user-info img {
     width: 72px;
     height: 72px;
@@ -139,7 +138,6 @@ button[type="submit"]:hover {
     border: 3px solid gray;
 }
 
-/* Upload status message styling */
 #upload-status {
     margin-top: 1.5rem;
     font-size: 1.08rem;
@@ -150,7 +148,6 @@ button[type="submit"]:hover {
     transition: color 0.2s;
 }
 
-/* Responsive tweaks */
 @media (max-width: 600px) {
     main {
         max-width: 98vw;
@@ -168,5 +165,5 @@ button[type="submit"]:hover {
 }
 
 footer {
-    color: rgb(88, 88, 88);
+    color: gray;
 }

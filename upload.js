@@ -4,7 +4,7 @@
  * Authentication is checked by presence of Google JWT in localStorage.
  */
 function redirectIfNotAuthenticated() {
-    if (!localStorage.getItem('google_jwt')) {
+    if (!localStorage.getItem('google_access_token')) { // Updated key
         window.location.href = 'index.html';
     }
 }
@@ -25,7 +25,6 @@ function handleUploadFormSubmit(event) {
         statusDiv.style.color = '#e91e63';
         return;
     }
-    // Check that the file is a PDF
     const file = files[0];
     if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
         statusDiv.textContent = 'Only PDF files are allowed.';
@@ -34,7 +33,6 @@ function handleUploadFormSubmit(event) {
     }
     statusDiv.textContent = `Uploading ${files.length} file(s)...`;
     statusDiv.style.color = '#ad1457';
-        // Pass the PDF file to the conversion/sendoff module
         import('./base64ConvertSend.js').then((module) => {
             return module.uploadPdf(file);
         }).then(() => {
