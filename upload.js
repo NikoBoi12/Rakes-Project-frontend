@@ -42,7 +42,12 @@ function handleUploadFormSubmit(event) {
     statusDiv.textContent = `Analyzing syllabus and creating events\n(this may take a moment)...`;
     statusDiv.style.color = '#3182ce';
     if (submitButton) {
+        if (!submitButton.dataset.defaultLabel) {
+            submitButton.dataset.defaultLabel = submitButton.textContent;
+        }
         submitButton.disabled = true;
+        submitButton.textContent = 'Processing...';
+        submitButton.setAttribute('aria-busy', 'true');
     }
 
     import('./base64ConvertSend.js').then((module) => {
@@ -55,6 +60,8 @@ function handleUploadFormSubmit(event) {
     }).finally(() => {
         if (submitButton) {
             submitButton.disabled = false;
+            submitButton.textContent = submitButton.dataset.defaultLabel || 'Upload';
+            submitButton.setAttribute('aria-busy', 'false');
         }
     });
 }

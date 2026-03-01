@@ -106,7 +106,7 @@ button[type="submit"] {
     box-shadow: 0 2px 8px var(--shadow-lg);
     letter-spacing: 0.02em;
 }
-button[type="submit"]:hover {
+button[type="submit"]:hover:not(:disabled) {
     background: var(--blue-hover);
     box-shadow: 0 4px 16px var(--shadow-lg);
 }
