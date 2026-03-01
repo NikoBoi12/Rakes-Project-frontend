@@ -18,6 +18,35 @@ body {
     min-height: 100vh;
     letter-spacing: 0.01em;
     font-size: 1.08rem;
+    position: relative;
+}
+
+.corner-gif {
+    position: fixed;
+    width: 175px;
+    height: 175px;
+    object-fit: contain;
+    z-index: 1;
+}
+
+#corner-top-left {
+    top: 5px;
+    left: 5px;
+}
+
+#corner-top-right {
+    top: 5px;
+    right: 5px;
+}
+
+#corner-bottom-left {
+    bottom: 5px;
+    left: 5px;
+}
+
+#corner-bottom-right {
+    bottom: 5px;
+    right: 5px;
 }
 
 header {
