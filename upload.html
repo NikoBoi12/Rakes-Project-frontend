@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="style.css">
-<!--
-    upload.html
-    File upload page for authenticated users.
-    - Redirects to login if not authenticated.
-    - Allows users to select and "upload" syllabus files (simulated).
-    - Displays upload status messages.
--->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,22 +14,21 @@
     </header>
     <main>
         <section>
-            <!-- Upload form for syllabus files -->
             <form id="upload-form">
-                <label for="syllabus-files" style="font-weight: 600; color: var(--primary-btn); margin-bottom: 0.5em; font-size: 1.08em;">Select syllabus files</label>
+                <label for="syllabus-files" style="font-weight: 600; color: var(--primary-btn); margin-bottom: 0.5em; font-size: 1.08em;">
+                    Select syllabus files
+                </label>
                 <input type="file" id="syllabus-files" name="syllabus-files" multiple accept=".pdf,.doc,.docx,.txt" />
                 <button type="submit">Upload</button>
             </form>
-            <!-- Status messages for upload process -->
             <div id="upload-status"></div>
         </section>
     </main>
     <footer>
-        <p style="color: var(--text-muted); font-size: 0.95em; text-align: center; margin: 2em 0 0;">
+        <p>
             Created by Tyler Roelfs, Evan Wachendorf, & Jesse Mills
         </p>
     </footer>
-    <!-- Main JS logic for authentication and upload handling -->
     <script src="upload.js"></script>
 </body>
 </html>
