@@ -164,7 +164,7 @@ button[type="submit"]:hover:not(:disabled) {
     border-radius: 50%;
     box-shadow: 0 2px 8px var(--shadow-lg);
     margin-bottom: 0.7rem;
-    border: 3px solid gray;
+    border: 3px solid white;
 }
 
 #upload-status {
@@ -194,5 +194,5 @@ button[type="submit"]:hover:not(:disabled) {
 }
 
 footer {
-    color: gray;
+    color: white;
 }
